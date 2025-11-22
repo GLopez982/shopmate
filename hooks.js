@@ -19,6 +19,7 @@ export const useGrocery = () => {
         }
     }
 
+    
     //USE EFFECT TO LOAD GROCERIES
     useEffect(()=>{
         if(groceries.length){return;}
@@ -34,10 +35,16 @@ export const useGrocery = () => {
 
 
 
-      const addItem = (grocery) => {
+    const addItem = (grocery) => {
         const newGrocery = {id: generate(), grocery}
-        setItem([newGrocery , ...groceries])
+        setItems([newGrocery , ...groceries])
         console.log(groceries)  
       };
-      return {groceries, addItem}
+
+      const removeItem = (id) => {
+        setItems(groceries.filter(item => item.id !== id));
+
+    }
+
+      return {groceries, addItem, removeItem}
 };

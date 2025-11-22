@@ -1,11 +1,9 @@
 import * as Font from "expo-font"; 
 import { useEffect, useState } from 'react';
-
-import { StyleSheet, Text, View } from 'react-native';
-import GroceryForm from './components/GroceryForm';
+import { StyleSheet, ImageBackground, View } from 'react-native';
 import Header from './components/Header';
+import GroceryList from "./components/GroceryList";
 
-import { generate } from 'shortid';
 
 export default function App() {
 
@@ -33,9 +31,17 @@ export default function App() {
   return (
     <>
       <View style={styles.container}>
+        <ImageBackground 
+        source={require("./assets/background.png")} 
+        resizeMode="cover"
+        style={styles.image}
+        >
       <Header/>
-      <GroceryForm onNewItem={addItem}/>
-   
+      <GroceryList/>
+      
+      
+   </ImageBackground>
+      
 
       </View>
     
@@ -46,7 +52,14 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ccbcbcff',
-
+    backgroundColor: 'tan',
   },
-});
+  image: {
+    flex: 1, 
+    justifyContent: 'center',
+    width: 430, 
+    height: 1000,
+
+  }
+  
+})

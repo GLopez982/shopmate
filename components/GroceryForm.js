@@ -22,6 +22,7 @@ export default function GroceryForm({onNewItem = f => f}){
             <Button
             title="Add Item"
             style={styles.button}
+            color={'rgba(0, 85, 100, 1)'}
             onPress={() => {
                 input.current.blur();
                 onNewItem(inputValue)
@@ -36,21 +37,21 @@ export default function GroceryForm({onNewItem = f => f}){
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 20, 
-        padding: 10, 
-        backgroundColor: 'rgb(9, 109, 124)', 
+        borderRadius: 20, 
+        marginTop: 15, 
+        padding: 5, 
+        backgroundColor: 'rgba(50, 161, 178, 1)', 
         alignContent: 'center',
-        width: 300,
-        height: 210,
+        width: 280,
+        height: 180,
         margin: 'auto', 
-        // flex: 1, 
-        // display: 'flex',
-        alignItems: 'center', 
+        alignItems: 'center'
 
     },
     text: {
 
-        fontSize: 35, 
+        color: 'brown', 
+        fontSize: 30, 
         fontFamily: 'InknutAntiqua'
 
     },
@@ -67,6 +68,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center', 
     },
     button: {
-        backgroundColor: 'green'
+        width: 10, 
     }
 })
