@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { generate } from "shortid";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -46,5 +46,5 @@ export const useGrocery = () => {
 
     }
 
-      return {groceries, addItem, removeItem}
+      return {groceries, addItem, removeItem};
 };

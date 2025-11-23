@@ -1,5 +1,7 @@
 import { StyleSheet, View, Text} from "react-native";
 
+
+//THIS COMPONENT RETURNS A BASIC HEADER THAT CONTAINS THE APPLICATION LOGO AND STYLING
 export default function Header(){
     return(
     <View style={styles.container}>
@@ -12,6 +14,7 @@ export default function Header(){
 
 const styles = StyleSheet.create({
     container: {
+        
         backgroundColor: 'rgb(50, 200, 233)', 
        
      
@@ -22,6 +25,7 @@ const styles = StyleSheet.create({
 
     }, 
     text: {
+        marginTop: 30,
         width: 'auto', 
         height: 120, 
         fontSize: 42,

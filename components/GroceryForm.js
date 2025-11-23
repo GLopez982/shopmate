@@ -16,13 +16,11 @@ export default function GroceryForm({onNewItem = f => f}){
             style={styles.textInput}
             value={inputValue}
             onChangeText={setInputValue}
-            autoCapitalize="characters"
             placeholder="Enter a grocery item"
             />
             <Button
             title="Add Item"
-            style={styles.button}
-            color={'rgba(0, 85, 100, 1)'}
+            color={'white'}
             onPress={() => {
                 input.current.blur();
                 onNewItem(inputValue)
@@ -40,7 +38,7 @@ const styles = StyleSheet.create({
         borderRadius: 20, 
         marginTop: 15, 
         padding: 5, 
-        backgroundColor: 'rgba(50, 161, 178, 1)', 
+        backgroundColor: 'rgba(50, 161, 178, 0.87)', 
         alignContent: 'center',
         width: 280,
         height: 180,
@@ -68,6 +66,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center', 
     },
     button: {
-        width: 10, 
+       width: 10, 
+       color: 'yellow',
     }
 })

@@ -1,24 +1,27 @@
 import { useState } from "react";
-import { View,Text,TouchableHighlight, StyleSheet} from "react-native"
+import { View,Text,TouchableHighlight, StyleSheet, Dimensions} from "react-native"
 
 export default function GroceryButton({groceryItem, onPress = f => f}){
 
     const [isFocused, setIsFocused] = useState(false);
-
+    const display = Dimensions.get('window').width;
     return(
         <TouchableHighlight 
             onPress={() => onPress(groceryItem)} 
             underlayColor={'transparent'} 
         >
-            <View style={[styles.row, isFocused && styles.rowFocused]}
+            <View style={[styles.row, isFocused && styles.rowFocused , {width: display / 2 }]}
              onFocus={() => setIsFocused(true)} 
              onBlur={() => setIsFocused(false)}
              
             >
                 <View style={[styles.groceryBubble]}/>
-                <Text>{groceryItem}</Text>
+                <Text style={styles.text} >{groceryItem}</Text>
+
             </View>
         </TouchableHighlight>
+        
+
     )
 
 }
@@ -34,7 +37,7 @@ const styles = StyleSheet.create({
         borderWidth: 2, 
         borderRadius: 20,
         borderColor: 'silver', 
-        width: 20, 
+        width: 12, 
         height: 20, 
         backgroundColor: 'rgba(17, 219, 255, 1)'
     },
@@ -43,17 +46,22 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         borderWidth: 2, 
         borderColor: 'black', 
-        width: 150, 
         gap: 10, 
         padding: 10, 
         margin: 5, 
-        borderRadius: 30, 
-        backgroundColor: 'brown'
-
+        borderRadius: 10, 
+        backgroundColor: 'brown',
+        flexWrap: 'wrap', 
+        
+        
     }, 
     rowFocused: {
         borderWidth: 5, 
         borderColor: 'white', 
         
+    },
+    text: {
+        color: 'white', 
+
     }
 })
