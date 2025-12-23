@@ -1,6 +1,7 @@
 import * as Font from "expo-font"; 
 import { useEffect, useState } from 'react';
-import { StyleSheet, ImageBackground, View } from 'react-native';
+import { StyleSheet, ImageBackground, View} from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
 import Header from './components/Header';
 import GroceryList from "./components/GroceryList";
 import Footer from "./components/Footer";

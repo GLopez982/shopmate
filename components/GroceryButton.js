@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { View,Text,TouchableHighlight, StyleSheet, Dimensions} from "react-native"
 
+
+//THIS COMPONENT RETURNS THE BUTTON COMPONENT WEHRE THE GROCERY ITEM WILL BE DISPLAYED. 
 export default function GroceryButton({groceryItem, onPress = f => f}){
 
     const [isFocused, setIsFocused] = useState(false);

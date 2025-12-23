@@ -46,5 +46,10 @@ export const useGrocery = () => {
 
     }
 
-      return {groceries, addItem, removeItem};
+    const clearList = () => {
+        setItems([])
+        AsyncStorage.removeItem('@GroceryListStore:Items');
+    }
+
+      return {groceries, addItem, removeItem, clearList};
 };

@@ -2,6 +2,9 @@ import { useState, useRef } from "react";
 import { StyleSheet, TextInput, View, Button, Text } from "react-native";
 
 
+//THIS COMPONENT RETURNS THE GROCERY FORM PORTION OF THE APPLICATION. 
+//THIS COMPONENT TAKES IN THE USER INPUT AND USES THE ON NEW ITEM PROP TO 
+//PASS THE INPUT VALUE TO THE ONNEWITEM FUNCTION.
 export default function GroceryForm({onNewItem = f => f}){
     const [inputValue, setInputValue] = useState("");
     const input = useRef();
@@ -20,7 +23,7 @@ export default function GroceryForm({onNewItem = f => f}){
             />
             <Button
             title="Add Item"
-            color={'white'}
+            color={'brown'}
             onPress={() => {
                 input.current.blur();
                 onNewItem(inputValue)

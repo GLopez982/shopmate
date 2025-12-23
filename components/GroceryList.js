@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, View, Text, TouchableOpacity} from "react-native";
+import { StyleSheet, FlatList, View, Text, TouchableOpacity, Pressable} from "react-native";
 import GroceryForm from "./GroceryForm";
 import { useGrocery } from "../hooks";
 import GroceryButton from "./GroceryButton";
@@ -7,15 +7,22 @@ import { useMemo, useState } from "react";
 
 export default function GroceryList(){
 
-    //RESERVED FOR THE CUSTOM HOOK
-    const {groceries, addItem, removeItem} = useGrocery();
+    //CUSTOM USEGROCERY() HOOK CREATED IN HOOK.JS FILE AND IMPORTED. 
+    //HOOK IS MADE TO HANDLE ADDITION AND REMOVAL OF GROCERY ARRAY
+    const {groceries, addItem, removeItem, clearList} = useGrocery();
+    
+    //USESTATE HOOK FOR HANDLING SORTING STATE
     const [sortType, setSortType] = useState('added');
 
+    //FUNCTION TO REMOVE ITEM FROM THE LIST
     const handlePress = (item) => {
         removeItem(item.id)
 
     }
 
+    //FUNCTION TO SORT GROCERIES BY A-Z, Z-A OR BACK TO RECENTLY ADDED STATE. 
+    //THIS FUNCTION UTILIZES THE USEMEMO HOOK TO HANDLE CALCULATION FOR WHEN SORTING SHOULD OCCUR 
+    //THIS IS ONLY TRIGGERED ON SORT OR CHANGE TO GROCERY ARRAY
     const sortedGroceries = useMemo(() => {
         const sorted = [...groceries]
         if(sortType === 'alphabetical'){
@@ -30,14 +37,15 @@ export default function GroceryList(){
    
 
     return(
-    <>
+    <View style={{flex: 1}}>
     <GroceryForm onNewItem={addItem}/>
     <View style={styles.container}>
         <View style={styles.plankContainer}>
             <Text style={styles.plankText}>Plank</Text>
         </View>
         <View style={styles.sortContainer}>
-            <TouchableOpacity
+
+        <TouchableOpacity
         style={[styles.sortButton, sortType ==='added' && styles.sortButtonActive]}
         onPress={() => setSortType('added')}><Text>Recently Added</Text></TouchableOpacity>
 
@@ -49,13 +57,13 @@ export default function GroceryList(){
         style={[styles.sortButton, sortType ==='reverse' && styles.sortButtonActive]}
         onPress={() => setSortType('reverse')}><Text>Z-A</Text></TouchableOpacity>
 
+        <Pressable style={styles.sortButton} onPress={clearList}><Text>Clear List!</Text></Pressable>
         </View>
 
 
 
         <FlatList
         data={sortedGroceries}
-        keyExtractor={(item) => item.id}
         renderItem={({item}) => (
                 <GroceryButton key= {item.id}
                 groceryItem={item.grocery}
@@ -64,10 +72,9 @@ export default function GroceryList(){
             )}
         scrollEnabled={true}
         nestedScrollEnabled={true}
-        ListEmptyComponent={<></>}
         />
     </View>
-   </>
+   </View>
     );
 }
 
